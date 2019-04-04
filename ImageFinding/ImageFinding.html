@@ -1,0 +1,466 @@
+<html>
+<head>
+<style>
+table, tr, td{
+	border: 2px solid black ;
+	border-collapse: collapse ;
+}
+
+.tab {
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.w3-red, .w3-hover-red:hover{
+	background-color:white!important
+}
+
+.tabcontent {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script language="JavaScript" type="text/javascript" src="xmlOutput.js"></script>
+</head>
+<body>
+	<table align="center">
+		<tr>
+			<td colspan="4" align="center" bgcolor="yellow">
+				檢查視訊
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				姓名：<input id="pName" type="text">
+			</td>
+			<td colspan="2">
+				病歷號：<input id="pId" type="number">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				出生日期：<input id="birthDate" type="date">
+			</td>
+			<td colspan="2">
+				乳房攝影日期：<input id="examineDate" type="date">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				醫院名稱：<input id="hospitalName" type="text">
+			</td>
+			<td colspan="2">
+				放射科醫師：<input id="radiologistName" type="text">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" align="center" bgcolor="yellow">
+				乳房X光攝影
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<input id="C0" type="radio" name="category" value="0"> Category 0: Need Additional Imaging Evaluation
+				<br><input id="C3" type="radio" name="category" value="3"> Category 3: Probably benign Finding - Short Interval Follow-up Is Suggested
+				<br><input id="C4" type="radio" name="category" value="4"> Category 4: Suspicious Abnormality - Biopsy Should be Considered
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="C4_1" type="radio" name="suspicion" value="low"> Low Suspicion
+					<input id="C4_2" type="radio" name="suspicion" value="intermediate"> Intermediate Suspicion
+					<input id="C4_3" type="radio" name="suspicion" value="moderate"> Moderate Suspicion
+				<br><input id="C5" type="radio" name="category" value="5"> Category 5: Highly Suggestive of malignancy - Appropriate Action Should Be Taken
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" align="center" bgcolor="yellow">
+				病勾
+			</td>
+		</tr>
+		<tr><td colspan="4">
+			
+		<div class="tab">
+			<button class="tablinks w3-red" onclick="openTab(event, 'Mass')">Mass</button>
+			<button class="tablinks" onclick="openTab(event, 'Calcifications')">Calcifications</button>
+			<button class="tablinks" onclick="openTab(event, 'FicalAsymmetry')">FicalAsymmetry</button>
+			<button class="tablinks" onclick="openTab(event, 'ArchitecturalDistortion')">ArchitecturalDistortion</button>
+		</div>
+		
+		<div id="Mass" class="tabcontent">
+			<form id="mass" name="mass" style="text-align: center">
+				<table align="center">
+					<tr>
+						<td colspan="3">
+							<input id="RT" type="radio" name="main" value="右側"/>Rt.&nbsp;
+							<input id="LT" type="radio" name="main" value="左側"/>Lt.&nbsp;
+							<input id="MU" type="radio" name="main" value="multiple, unilateral"/>Multiple, Unilateral&nbsp;
+							<input id="MB" type="radio" name="main" value="multiple, bilateral"/>Multiple, Bilateral<br />
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="2" align="center">Location</td>
+						<td colspan="2">
+							<input type="radio" name="BreastSiteCS" id="C50.0" value="Nipple"/>Nipple&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.1" value="Central portion of the breast"/>Central portion of the breast&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.2" value="UIQ"/>UIQ&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.3" value="LIQ"/>LIQ&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.4" value="UOQ"/>UOQ&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.5" value="LOQ"/>LOQ&nbsp;<br>
+							<input type="radio" name="BreastSiteCS" id="C50.6" value="Axillary tail"/>Axillary tail
+							<input type="radio" name="BreastSiteCS" id="C50.8" value="Overlapping lesion of breast"/>Overlapping lesion of breast&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.9" value="Breast, not otherwise specified (NOS)"/>Breast, not otherwise specified (NOS)&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.10" value="sub-areolar"/>sub-areolar&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td align="center">One view only</td>
+						<td>
+							<input type="radio" name="HemsphereViewCS" id="UH" value="upper hemisphere"/>Upper Hemisphere&nbsp;
+							<input type="radio" name="HemsphereViewCS" id="LH" value="lower hemisphere"/>Lower Hemisphere&nbsp;<br>
+							<input type="radio" name="HemsphereViewCS" id="OH" value="outer hemisphere"/>Outer Hemisphere&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="HemsphereViewCS" id="IH" value="inner hemisphere"/>Inner Hemisphere&nbsp; 
+						</td>
+					</tr>
+					<tr>
+						<td>Size</td>
+						<td colspan="2">
+							<input type="radio" name="SizeCS" id="SO1" value="1.0 cm"/>&lt;1.0 cm&nbsp;
+							<input type="radio" name="SizeCS" id="SO2" value="1-2 cm"/>1-2 cm&nbsp;
+							<input type="radio" name="SizeCS" id="SO3" value="2-3 cm"/>2-3 cm&nbsp;
+							<input type="radio" name="SizeCS" id="SO4" value="3-4 cm"/>3-4 cm&nbsp;
+							<input type="radio" name="SizeCS" id="SO5" value="54 cm"/>&gt;4 cm
+						</td>
+					</tr>
+					<tr>
+						<td>Shape</td>
+						<td colspan="2">
+							<input type="radio" name="ShapeCS" id="SO1" value="Round"/>Round&nbsp;
+							<input type="radio" name="ShapeCS" id="SO2" value="Oval"/>Oval&nbsp;
+							<input type="radio" name="ShapeCS" id="SO3" value="Lobular"/>Lobular&nbsp;
+							<input type="radio" name="ShapeCS" id="SO4" value="Irregular"/>Irregular
+						</td>
+					</tr>
+					<tr>
+						<td>Margins</td>
+						<td colspan="2">
+							<input type="radio" name="MarginCS" id="MO1" value="Circumscribed"/>Circumscribed&nbsp;
+							<input type="radio" name="MarginCS" id="MO2" value="Microlobulated"/>Microlobulated&nbsp;
+							<input type="radio" name="MarginCS" id="MO3" value="Obscured"/>Obscured&nbsp;
+							<input type="radio" name="MarginCS" id="MO4" value="Indistinct"/>Indistinct&nbsp;
+							<input type="radio" name="MarginCS" id="MO5" value="Spiculated"/>Spiculated
+						</td>
+					</tr>
+					<tr>
+						<td>Density</td>
+						<td colspan="2">
+							<input type="radio" name="DensityCS" id="HD" value="High Density"/>High Density&nbsp;
+							<input type="radio" name="DensityCS" id="ED" value="Equal Density"/>Equal Density&nbsp;
+							<input type="radio" name="DensityCS" id="LD" value="Low Density"/>Low Density&nbsp;
+							<input type="radio" name="DensityCS" id="FC" value="Fat Containing"/>Fat Containing
+						</td>
+					</tr>
+				</table>
+					<div align="center">
+						<br><input type="button" value="確定" id="mass" name="RID39055" onclick="check(this)" />
+					</div>
+			</form>
+		</div>
+
+		<div id="Calcifications" class="tabcontent" style="display:none">
+		 <form id="calcifications" name="calcifications" style="text-align: center">
+				<table align="center">
+					<tr>
+						<td colspan="3">
+							<input id="RT" type="radio" name="main" value="右側"/>Rt.&nbsp;
+							<input id="LT" type="radio" name="main" value="左側"/>Lt.&nbsp;
+							<input id="MU" type="radio" name="main" value="multiple, unilateral"/>Multiple, Unilateral&nbsp;
+							<input id="MB" type="radio" name="main" value="multiple, bilateral"/>Multiple, Bilateral<br />
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="2" align="center">Location</td>
+						<td colspan="2">
+							<input type="radio" name="BreastSiteCS" id="C50.0" value="Nipple"/>Nipple&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.1" value="Central portion of the breast"/>Central portion of the breast&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.2" value="UIQ"/>UIQ&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.3" value="LIQ"/>LIQ&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.4" value="UOQ"/>UOQ&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.5" value="LOQ"/>LOQ&nbsp;<br>
+							<input type="radio" name="BreastSiteCS" id="C50.6" value="Axillary tail"/>Axillary tail
+							<input type="radio" name="BreastSiteCS" id="C50.8" value="Overlapping lesion of breast"/>Overlapping lesion of breast&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.9" value="Breast, not otherwise specified (NOS)"/>Breast, not otherwise specified (NOS)&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.10" value="sub-areolar"/>sub-areolar&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td align="center">One view only</td>
+						<td>
+							<input type="radio" name="HemsphereViewCS" id="UH" value="upper hemisphere"/>Upper Hemisphere&nbsp;
+							<input type="radio" name="HemsphereViewCS" id="LH" value="lower hemisphere"/>Lower Hemisphere&nbsp;<br>
+							<input type="radio" name="HemsphereViewCS" id="OH" value="outer hemisphere"/>Outer Hemisphere&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="HemsphereViewCS" id="IH" value="inner hemisphere"/>Inner Hemisphere&nbsp; 
+						</td>
+					</tr>
+					<tr>
+						<td>Distribution</td>
+						<td colspan="2">
+							<input type="radio" name="DistributionCS" id="DO1" value="Grouped"/>Grouped&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="DistributionCS" id="DO2" value="Linear"/>Linear&nbsp;
+							<input type="radio" name="DistributionCS" id="DO3" value="Segmental"/>Segmental&nbsp;<br/>
+							<input type="radio" name="DistributionCS" id="DO4" value="Regional"/>Regional&nbsp;
+							<input type="radio" name="DistributionCS" id="DO5" value="Diffuse"/>Diffuse</td>
+						</td>
+					</tr>
+					<tr>
+						<td>Morphology</td>
+						<td colspan="2">
+							<input type="radio" name="MorphologyCS" id="MO1" value="Amorphous" />Amorphous&nbsp;
+							<input type="radio" name="MorphologyCS" id="MO2" value="Coarse Heterogeneous" />Coarse Heterogeneous&nbsp;<br/>
+							<input type="radio" name="MorphologyCS" id="MO3" value="Fine Pleomorphic" />value Pleomorphic
+							<input type="radio" name="MorphologyCS" id="MO4" value="Fine Linear-Branching" />Fine Linear Branching</td>
+						</td>
+					</tr>
+					
+				</table>
+					<div align="center">
+						<br><input type="button" value="確定" id="calcifications" name="RID34642" onclick="check(this)" />
+					</div>
+			</form>
+		</div>
+
+		<div id="FicalAsymmetry" class="tabcontent" style="display:none">
+			<form id="asymmetry" name="asymmetry" style="text-align: center" >
+				<table align="center">
+					<tr>
+						<td colspan="3">
+							<input id="RT" type="radio" name="main" value="右側"/>Rt.&nbsp;
+							<input id="LT" type="radio" name="main" value="左側"/>Lt.&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="3" align="center">Location</td>
+						<td colspan="2">
+							<input type="radio" name="BreastSiteCS" id="C50.0" value="Nipple"/>Nipple&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.1" value="Central portion of the breast"/>Central portion of the breast&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.2" value="UIQ"/>UIQ&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.3" value="LIQ"/>LIQ&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.4" value="UOQ"/>UOQ&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.5" value="LOQ"/>LOQ&nbsp;<br>
+							<input type="radio" name="BreastSiteCS" id="C50.6" value="Axillary tail"/>Axillary tail
+							<input type="radio" name="BreastSiteCS" id="C50.8" value="Overlapping lesion of breast"/>Overlapping lesion of breast&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.9" value="Breast, not otherwise specified (NOS)"/>Breast, not otherwise specified (NOS)&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.10" value="sub-areolar"/>sub-areolar&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td align="center">One view only</td>
+						<td>
+							<input type="radio" name="HemsphereViewCS" id="UH" value="upper hemisphere"/>Upper Hemisphere&nbsp;
+							<input type="radio" name="HemsphereViewCS" id="LH" value="lower hemisphere"/>Lower Hemisphere&nbsp;<br>
+							<input type="radio" name="HemsphereViewCS" id="OH" value="outer hemisphere"/>Outer Hemisphere&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="HemsphereViewCS" id="IH" value="inner hemisphere"/>Inner Hemisphere&nbsp; 
+						</td>
+					</tr>
+				</table>
+				<div align="center">
+					<br><input type="button" value="確定" id="asymmetry" name="RID34265" onclick="check(this)"/>
+				</div>
+			</form>
+		</div>
+
+		<div id="ArchitecturalDistortion" class="tabcontent" style="display:none">
+			<form id="architecturalDistortion" name="architecturalDistortion" style="text-align: center">
+				<table align="center">
+					<tr>
+						<td colspan="3">
+								<input id="RT" type="radio" name="main" value="右側"/>Rt.&nbsp;
+								<input id="LT" type="radio" name="main" value="左側"/>Lt.&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="3" align="center">Location</td>
+						<td colspan="2">
+						<input type="radio" name="BreastSiteCS" id="C50.0" value="Nipple"/>Nipple&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.1" value="Central portion of the breast"/>Central portion of the breast&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.2" value="UIQ"/>UIQ&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.3" value="LIQ"/>LIQ&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.4" value="UOQ"/>UOQ&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.5" value="LOQ"/>LOQ&nbsp;<br>
+							<input type="radio" name="BreastSiteCS" id="C50.6" value="Axillary tail"/>Axillary tail
+							<input type="radio" name="BreastSiteCS" id="C50.8" value="Overlapping lesion of breast"/>Overlapping lesion of breast&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.9" value="Breast, not otherwise specified (NOS)"/>Breast, not otherwise specified (NOS)&nbsp;
+							<input type="radio" name="BreastSiteCS" id="C50.10" value="sub-areolar"/>sub-areolar&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="2" align="center">One view only</td>
+						<td>
+							<input type="radio" name="HemsphereViewCS" id="UH" value="upper hemisphere"/>Upper Hemisphere&nbsp;
+							<input type="radio" name="HemsphereViewCS" id="LH" value="lower hemisphere"/>Lower Hemisphere&nbsp;<br>
+							<input type="radio" name="HemsphereViewCS" id="OH" value="outer hemisphere"/>Outer Hemisphere&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="HemsphereViewCS" id="IH" value="inner hemisphere"/>Inner Hemisphere&nbsp; 
+						</td>
+					</tr>
+				</table>
+					<div align="center">
+						<br><input type="button" value="確定" id="architecturalDistortion" name="RID34261" onclick="check(this)"/>
+					</div>
+			</form>
+		</div>
+	
+	
+		</td></tr>
+		<tr>
+			<td colspan="4">
+				<input id="Q1" type="checkbox" />Q1：Thickening or retraction of the skin and/or nipple：
+					<input id="Q1_rt" type="checkbox" value="Right"/>Rt.&nbsp;
+					<input id="Q1_lt" type="checkbox" value="Left"/>Lt.<br />
+				<input id="Q2" type="checkbox" />Q2：Dense or enlarged axillary LNs：
+					<input id="Q2_rt" type="checkbox" value="Right"/>Rt.&nbsp;
+					<input id="Q2_lt" type="checkbox" value="Left"/>Lt.<br />
+				<input id="Q3" type="checkbox" />Q3：Dilated lactiferous ducts：
+					<input id="Q3_rt" type="checkbox" value="Right"/>Rt.&nbsp;
+					<input id="Q3_lt" type="checkbox" value="Left"/>Lt.<br />
+				<input id="Q4" type="checkbox" />Q4：Diffuse thickening of the skin and increased density：
+					<input id="Q4_rt" type="checkbox" value="Right"/>Rt.&nbsp;
+					<input id="Q4_lt" type="checkbox" value="Left"/>Lt.<br />
+				<input id="Q5" type="checkbox" />Q5：Others：
+					<input id="Q5_answer" type="text" />
+			</td>
+		</tr>
+		
+	</table>
+	<div align="center">
+			<br><input id="Filing" type="button" value="建檔" onclick="save()" />
+		</div>
+		
+	<script>
+		var cmass=new Array(15), ccal=new Array(15), casym=new Array(15), cdistort=new Array(15);
+		cmass[0]=0;ccal[0]=0;casym[0]=0;cdistort[0]=0;
+		
+		function openTab(evt, tabName) {
+			var i;
+			var x = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";  
+			}
+			var tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < x.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+			}
+			
+			document.getElementById(tabName).style.display = "block";  
+			evt.currentTarget.className += " w3-red";
+		}
+		
+		
+		function check(p) {			
+			if(p.id=="mass")
+				cmass[0]++;
+			if(p.id == "calcifications")
+				ccal[0]++;
+			if(p.id == "asymmetry")
+				casym[0]++;
+			if(p.id == "architecturalDistortion")
+				cdistort[0]++;
+				
+			var thisform = document.getElementById(p.id);
+			var elements = thisform.elements, count=0, checkcount=0;
+			for (i = 0; i < elements.length; i++) {
+					if (elements[i].checked == true)
+						count++;
+			}
+			if(p.id == "mass" && count!= 7)
+				checkcount = 1;
+			if(p.id == "calcifications" && count!= 5)
+				checkcount = 1;
+			if((p.id == "asymmetry" || p.id == "architecturalDistortion") && count!= 3)
+				checkcount = 1;
+			
+            if (checkcount != 0)
+                alert(p.id + "未勾選完畢");
+            else{
+				mammoXML(p.id, p.name);
+                for (i = 0; i < elements.length; i++) {
+					if (elements[i].checked == true)
+						elements[i].checked=false;
+				}
+			}			
+        }
+		
+		function save(){
+			var checkcount=0;
+			if (document.getElementById("pName").value == '')
+				checkcount = 1;
+			if (document.getElementById("pId").value == '')
+                checkcount = 1;
+			if (document.getElementById("birthDate").value == '')
+                checkcount = 1;
+			if (document.getElementById("examineDate").value == '')
+                checkcount = 1;
+			if (document.getElementById("hospitalName").value == '')
+                checkcount = 1;
+			if (document.getElementById("radiologistName").value == '')
+                checkcount = 1;
+			if ( document.getElementById("C0").checked == false && document.getElementById("C3").checked == false && document.getElementById("C4").checked == false && document.getElementById("C5").checked == false)
+				checkcount = 1;
+			if ( document.getElementById("C4").checked == true && document.getElementById("C4_1").checked == false && document.getElementById("C4_2").checked == false && document.getElementById("C4_3").checked == false)
+				checkcount = 1;
+			if ( document.getElementById("Q1").checked == false && document.getElementById("Q2").checked == false && document.getElementById("Q3").checked == false && document.getElementById("Q4").checked == false && document.getElementById("Q5").checked == false)
+				checkcount = 1;
+			if ( document.getElementById("Q5").checked == true && document.getElementById("Q5_answer").value == '')
+				checkcount = 1;
+				
+			if (checkcount != 0)
+                alert("Diagnostic Form 未勾選完畢");
+            else{
+				diagnosisXML();
+				document.getElementById("pName").value = '';
+				document.getElementById("pId").value = '';
+				document.getElementById("birthDate").value = '';
+				document.getElementById("examineDate").value = '';
+				document.getElementById("hospitalName").value = '';
+				document.getElementById("radiologistName").value = '';
+				
+				document.getElementById("C0").checked = false;
+				document.getElementById("C3").checked = false;
+				document.getElementById("C4").checked = false;
+				document.getElementById("C4_1").checked = false;
+				document.getElementById("C4_2").checked = false;
+				document.getElementById("C4_3").checked = false;
+				document.getElementById("C5").checked = false;
+				
+				document.getElementById("Q1").checked = false;
+				document.getElementById("Q1_rt").checked = false;
+				document.getElementById("Q1_lt").checked = false;
+				document.getElementById("Q2").checked = false;
+				document.getElementById("Q2_rt").checked = false;
+				document.getElementById("Q2_lt").checked = false;
+				document.getElementById("Q3").checked = false;
+				document.getElementById("Q3_rt").checked = false;
+				document.getElementById("Q3_lt").checked = false;
+				document.getElementById("Q4").checked = false;
+				document.getElementById("Q4_rt").checked = false;
+				document.getElementById("Q4_lt").checked = false;
+				document.getElementById("Q5").checked = false;
+				document.getElementById("Q5_answer").value = '';
+			}	
+			
+		}
+	</script>
+</body>
+</html>
